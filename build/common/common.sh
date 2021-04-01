@@ -4,8 +4,8 @@
 # matrix.target=${Modelfile}
 
 DIY_GET_COMMON_SH() {
-TYZZZ="package/lean/default-settings/files/zzz-default-settings"
-LIZZZ="package/default-settings/files/zzz-default-settings"
+TYOTA="package/lean/default-settings/files/zzz-default-settings"
+LIOTA="package/default-settings/files/zzz-default-settings"
 }
 
 # 全脚本源码通用diy.sh文件
@@ -41,14 +41,14 @@ fi
 Diy_lede() {
 DIY_GET_COMMON_SH
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
-sed -i 's/iptables -t nat/# iptables -t nat/g' ${TYZZZ}
+sed -i 's/iptables -t nat/# iptables -t nat/g' ${TYOTA}
 if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
 
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
-git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
 git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
 git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
 git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
@@ -62,7 +62,7 @@ Diy_lede2() {
 DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
 cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
-sed -i '/exit 0/i\echo "*/3 * * * * chmod +x /etc/webweb.sh && source /etc/webweb.sh" >> /etc/crontabs/root' ${TYZZZ}
+sed -i '/exit 0/i\echo "*/3 * * * * chmod +x /etc/webweb.sh && source /etc/webweb.sh" >> /etc/crontabs/root' ${TYOTA}
 }
 
 
@@ -74,7 +74,7 @@ DIY_GET_COMMON_SH
 rm -rf package/diy/luci-app-adguardhome
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
-git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
 git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
 git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
 git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
@@ -89,7 +89,7 @@ DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
 cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
 rm -rf feeds/packages/net/adguardhome
-sed -i '/exit 0/i\echo "*/3 * * * * chmod +x /etc/webweb.sh && source /etc/webweb.sh" >> /etc/crontabs/root' ${LIZZZ}
+sed -i '/exit 0/i\echo "*/3 * * * * chmod +x /etc/webweb.sh && source /etc/webweb.sh" >> /etc/crontabs/root' ${LIOTA}
 sed -i 's/DEFAULT_PACKAGES +=/DEFAULT_PACKAGES += luci-app-passwall/g' target/linux/x86/Makefile
 }
 
@@ -112,8 +112,8 @@ cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
 cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-argon-config}
 rm -rf feeds/luci/themes/{luci-theme-argonv2,luci-theme-argonv3}
-sed -i '/exit 0/i\echo "*/3 * * * * chmod +x /etc/webweb.sh && source /etc/webweb.sh" >> /etc/crontabs/root' ${TYZZZ}
-sed -i "/exit 0/i\sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" ${TYZZZ}
+sed -i '/exit 0/i\echo "*/3 * * * * chmod +x /etc/webweb.sh && source /etc/webweb.sh" >> /etc/crontabs/root' ${TYOTA}
+sed -i "/exit 0/i\sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" ${TYOTA}
 }
 
 
