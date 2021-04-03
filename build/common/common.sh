@@ -279,7 +279,7 @@ else
 	Firmware_hz="${Firmware_sfx}"
 fi
 if [[ "${Modelfile}" =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
-	TARGET_PROFILE="N1,Vplus,Beikeyun,L1Pro,S9xxx"
+	TARGET_PROFILE="N1"
 fi
 echo
 echo " 编译源码: ${COMP2}"
